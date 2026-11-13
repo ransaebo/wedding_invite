@@ -1,0 +1,335 @@
+
+    :root {
+      --bg-color: #faf8f5;
+      --text-color: #33302e;
+      --accent-color: #8c7a6b;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Главный экран */
+    .hero {
+      padding: 60px 20px 40px;
+    }
+
+    .hero-subtitle {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .hero-date {
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 450px;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 220px 220px 12px 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    /* Секции */
+    section {
+      padding: 45px 0;
+      border-top: 1px solid rgba(140, 122, 107, 0.2);
+    }
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* Тайминг */
+    .timeline-item {
+      margin-bottom: 20px;
+    }
+
+    .time {
+      font-weight: 500;
+      color: var(--accent-color);
+      font-size: 18px;
+    }
+
+    /* Палитра дресс-кода */
+    .palette {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .color-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 14px 32px;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+    }
+
+    /* Адаптация под маленькие экраны */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 38px; }
+      .hero-photo { height: 400px; }
+      h2 { font-size: 30px; }
+    }
+
+      /* Стили для экрана-заставки */
+  .welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #faf8f5; /* Основной бежевый фон вашего сайта */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  /* Класс для плавного исчезновения */
+  .welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .welcome-content {
+    max-width: 420px;
+    padding: 40px 25px;
+    border: 1px solid rgba(140, 122, 107, 0.3);
+    border-radius: 200px 200px 16px 16px;
+    background-color: #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  }
+
+  .welcome-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: #8c7a6b;
+    margin-bottom: 12px;
+  }
+
+  .welcome-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    color: #33302e;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .welcome-date {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #8c7a6b;
+    margin-bottom: 28px;
+  }
+
+  .welcome-btn {
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    padding: 16px 34px;
+    font-size: 14px;
+    box-shadow: 0 6px 20px rgba(140, 122, 107, 0.25);
+  }
+
+  .welcome-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #99918a;
+  }
+
+  /* Плавающая кнопка музыки */
+  .music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #8c7a6b;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .music-toggle.playing {
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }  /* Стили для экрана-заставки */
+  .welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #faf8f5; /* Основной бежевый фон вашего сайта */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  /* Класс для плавного исчезновения */
+  .welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .welcome-content {
+    max-width: 420px;
+    padding: 40px 25px;
+    border: 1px solid rgba(140, 122, 107, 0.3);
+    border-radius: 200px 200px 16px 16px;
+    background-color: #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  }
+
+  .welcome-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: #8c7a6b;
+    margin-bottom: 12px;
+  }
+
+  .welcome-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    color: #33302e;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .welcome-date {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #8c7a6b;
+    margin-bottom: 28px;
+  }
+
+  .welcome-btn {
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    padding: 16px 34px;
+    font-size: 14px;
+    box-shadow: 0 6px 20px rgba(140, 122, 107, 0.25);
+  }
+
+  .welcome-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #99918a;
+  }
+
+  /* Плавающая кнопка музыки */
+  .music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #8c7a6b;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .music-toggle.playing {
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  

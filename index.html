@@ -1,17 +1,210 @@
-<!DOCTYPE html> <!-- Объявление формата документа -->
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 
-<head> <!-- Техническая информация о документе -->
-    <meta charset="UTF-8"> <!-- Определяем кодировку символов документа -->
-    <title>test</title> <!-- Задаем заголовок документа -->
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> Подключаем внешнюю таблицу стилей -->
-    <!-- <script src="script.js"></script> Подключаем сценарии -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Егор и Евгения — Приглашение на свадьбу</title>
+
+    <!--old name: aiSuggestions-->
+
+    <!-- Настройка красивого превью для Telegram и WhatsApp -->
+    <meta property="og:title" content="Егор и Евгения — 29 января 2027">
+    <meta property="og:description" content="Приглашаем вас разделить с нами самый счастливый день нашей жизни!">
+    <meta property="og:image" content="https://github.io">
+    <meta property="og:type" content="website">
+
+    <!-- Подключение шрифтов Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link
+        href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!--Стиль-->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body> <!-- Основная часть документа -->
-    <h1>
-        this is a wedding invite
-    </h1>
+<body>
+
+    <!-- Экран-заставка (Шторка) -->
+    <div id="welcome-screen" class="welcome-overlay">
+        <div class="welcome-content">
+            <div class="welcome-subtitle">Особый день</div>
+            <h2 class="welcome-names">Егор & Евгения</h2>
+            <p class="welcome-date">29 января 2027</p>
+            <button id="open-invite-btn" class="btn welcome-btn">Открыть приглашение</button>
+            <div class="welcome-note">Рекомендуем включить звук 🎵</div>
+        </div>
+    </div>
+
+    <!-- Скрытый аудиоплеер и плавающая кнопка паузы -->
+    <audio id="bg-music" loop>
+        <source src="audio\love story indila fairy version.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" class="music-toggle" title="Управление музыкой">⏸️</button>
+
+    <script>
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const openBtn = document.getElementById('open-invite-btn');
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        let isPlaying = false;
+
+        // Блокируем прокрутку страницы, пока открыта заставка
+        document.body.style.overflow = 'hidden';
+        music.volume = 0.3;
+
+        // Нажатие на кнопку «Открыть приглашение»
+        openBtn.addEventListener('click', () => {
+            // 1. Плавно скрываем заставку и возвращаем прокрутку
+            welcomeScreen.classList.add('hidden');
+            document.body.style.overflow = '';
+
+            // 2. Запускаем музыку
+            music.play().then(() => {
+                isPlaying = true;
+                musicBtn.classList.add('playing');
+                musicBtn.textContent = '⏸️';
+            }).catch(() => {
+                isPlaying = false;
+                musicBtn.textContent = '🎵';
+            });
+        });
+
+        // Управление музыкой через кнопку в углу
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.textContent = '🎵';
+            } else {
+                music.play();
+                musicBtn.classList.add('playing');
+                musicBtn.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+
+
+    <div class="container">
+        <!-- Первый экран -->
+        <header class="hero">
+            <div class="hero-subtitle">Приглашение на свадьбу</div>
+            <h1>Егор & Евгения</h1>
+            <div class="hero-date">29 • 01 • 2027</div>
+            <!-- Замените ссылку на имя вашего файла фото в репозитории -->
+            <img src="images\1061.webp" alt="Егор и Евгения" class="hero-photo">
+            <br>
+            <a href="#rsvp" class="btn">Подтвердить присутствие</a>
+        </header>
+
+        <!-- Приветствие -->
+        <section>
+            <h2>Дорогие родные и друзья!</h2>
+            <p>Совсем скоро состоится один из самых важных дней в нашей жизни — день нашей свадьбы.
+                Мы будем бесконечно рады видеть вас рядом и разделить с вами этот теплый праздник!</p>
+        </section>
+
+        <!-- Тайминг -->
+        <section>
+            <h2>Программа дня</h2>
+            <div class="time">29 января (пятница)</div>
+            <div class="timeline-item">
+                <div class="time">11:30</div>
+                <div><strong>Торжественная церемония бракосочетания</strong></div>
+                <div>отдел ЗАГС г. Чайковский Вокзальная улица, 41</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">16:00</div>
+                <div><strong>Праздничный банкет, танцы и поздравления</strong></div>
+                <div>Ресторан "Таверна", база отдыха "Раздолье"</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">23:00</div>
+                <div>Завершение вечера</div>
+            </div>
+            <div class="time">30 января (суббота)</div>
+            <div class="timeline-item">
+                <div class="time">12:00</div>
+                <div><strong>Второй день</strong></div>
+                <div>база отдыха "Раздолье"</div>
+            </div>
+        </section>
+
+        <!-- Место проведения -->
+        <!-- <section> -->
+        <!-- <h2>Место проведения</h2> -->
+        <!-- <p><strong>Загородный клуб «Лесная сказка»</strong><br>ул. Парковая, д. 12 (шатер у озера)</p> -->
+        <!-- <p>Для гостей на автомобилях предусмотрена бесплатная охраняемая парковка на территории клуба.</p> -->
+        <!-- Вставьте вашу ссылку на Яндекс Карты или 2ГИС -->
+        <!-- <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Открыть на карте</a> -->
+        <!-- </section> -->
+
+        <!-- Дресс-код -->
+        <section>
+            <h2>Дресс-код</h2>
+            <p>Мы будем очень признательны, если вы поддержите цветовую гамму нашего вечера в своих нарядах:</p>
+            <div class="palette">
+                <div class="color-circle" style="background-color: #e6dfd5;" title="Бежевый"></div>
+                <div class="color-circle" style="background-color: #c2b2a3;" title="Пудрово-кофейный"></div>
+                <div class="color-circle" style="background-color: #8c7a6b;" title="Тауп"></div>
+                <div class="color-circle" style="background-color: #a3b18a;" title="Шалфейный"></div>
+                <div class="color-circle" style="background-color: #3a3a3a;" title="Графитовый"></div>
+            </div>
+        </section>
+
+        <!-- Детали и пожелания -->
+        <section>
+            <h2>Пожелания</h2>
+            <p>Ваше присутствие в день нашей свадьбы - самый значимый подарок для нас!
+                <br>
+                <br>Мы понимаем, что дарить цветы на свадьбу - это традиция, но мы не сможем насладиться их красотой в
+                полной
+                мере...
+                Будем рады любой другой альтернативе (вино или в денежном эквиваленте).
+            </p>
+        </section>
+
+        <section>
+            <h2>Примечание</h2>
+            <p>Будем благодарны, если вы воздержитесь от криков "Горько" на празднике,
+                ведь поцелуй — это знак выражения чувств, он не может быть по заказу. </p>
+        </section>
+
+        <!-- Анкета гостя (RSVP) -->
+        <section id="rsvp">
+            <h2>Анкета гостя</h2>
+            <p>Пожалуйста, подтвердите свое присутствие и выберите предпочтения по напиткам до <br><strong>21 декабря
+                    2026
+                    года</strong>.</p>
+            <!-- Замените ссылку на вашу Яндекс или Google Форму -->
+            <!-- <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer" class="btn">Заполнить анкету</a> -->
+            <div>
+                <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                <iframe src="https://forms.yandex.ru/u/6af04ab5b9e5ca54b7cc311b?iframe=1" frameborder="0"
+                    name="ya-form-6af04ab5b9e5ca54b7cc311b" width="100%"></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h2>Полезные ссылки</h2>
+            <div>
+                <a href="https://vk.me/join/DvRTduCUB_5a8FLgIiJGDXyq44VxMKsbyV0=" target="_blank"
+                    rel="noopener noreferrer" class="btn">Чат Вконтанте</a>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <!-- <section> -->
+        <!-- <h2>Контакты</h2> -->
+        <!-- <p>Если у вас возникнут вопросы в день торжества, вам с радостью поможет наш свадебный координатор Елена:</p> -->
+        <!-- <p><a href="tel:+79991234567" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">+7 (999) 123-45-67</a></p> -->
+        <!-- <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Написать в Telegram</a> -->
+        </section>
+    </div>
+
 </body>
 
 </html>
